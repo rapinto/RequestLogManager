@@ -85,9 +85,9 @@ static RequestLogManager* sharedInstance = nil;
 }
 
 
-- (void)operationManager:(RPOperationManager*)operationManager
-        didFailOperation:(RPRequestOperation*)operation
-               withError:(NSError*)error
+- (BOOL)isHandledOperationManager:(RPOperationManager*)operationManager
+                 didFailOperation:(RPRequestOperation*)operation
+                        withError:(NSError*)error
 {
     NSLog(@"##################REQUEST##################");
     NSLog(@"%@  - %@", operation.request.HTTPMethod, operation.request.URL);
@@ -99,6 +99,8 @@ static RequestLogManager* sharedInstance = nil;
     NSLog(@"%@", operation.response.allHeaderFields);
     NSLog(@"Object Response %@", operation.responseObject);
     NSLog(@"##########################################");
+    
+    return NO;
 }
 
 
