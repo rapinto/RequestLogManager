@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RequestLogManager"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "RPNetworking based delegate to log requests"
 
   s.description  = <<-DESC
@@ -64,7 +64,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-    s.ios.deployment_target = "5.0"
+    s.ios.deployment_target = "7.0"
     s.watchos.deployment_target = "2.0"
 
 
