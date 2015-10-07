@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RequestLogManager"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "RPNetworking based delegate to log requests"
 
   s.description  = <<-DESC
@@ -127,6 +127,7 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-   s.dependency "RPNetworking", "~> 2.0.23"
+    s.dependency "AFNetworking", "~> 2.6.1"
+    s.dependency "RPNetworking", "~> 2.0.23"
 
 end
