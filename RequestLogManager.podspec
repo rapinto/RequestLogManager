@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RequestLogManager"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "RPNetworking based delegate to log requests"
 
   s.description  = <<-DESC
@@ -64,13 +64,8 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
-  s.platform     = :ios, "7.0"
-
-  #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
-  # s.watchos.deployment_target = "2.0"
+    s.ios.deployment_target = "5.0"
+    s.watchos.deployment_target = "2.0"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -79,7 +74,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/rapinto/RequestLogManager.git", :tag => "1.0.2" }
+  s.source       = { :git => "https://github.com/rapinto/RequestLogManager.git", :tag => s.version }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -132,6 +127,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-   s.dependency "RPNetworking", "~> 1.0.3"
+   s.dependency "RPNetworking", "~> 2.0.23"
 
 end

@@ -28,11 +28,11 @@
 
 
 #import <Foundation/Foundation.h>
-#import "RPOperationManagerDelegate.h"
+#import "RPHTTPManagerDelegate.h"
 
 
 
-@interface RequestLogManager : NSObject <RPOperationManagerDelegate>
+@interface RequestLogManager : NSObject <RPHTTPManagerDelegate>
 
 
 

@@ -28,8 +28,6 @@
 
 
 #import "RequestLogManager.h"
-#import "RPOperationManager.h"
-#import "RPRequestOperation.h"
 
 
 
@@ -63,45 +61,49 @@ static RequestLogManager* sharedInstance = nil;
 
 
 
-- (void)operationManager:(RPOperationManager*)operationManager
-     didSucceedOperation:(RPRequestOperation*)operation
-      withResponseObject:(id)responseObject
+- (void)requestDidSucceed:(NSURLRequest*)request
+             httpResponse:(NSHTTPURLResponse*)response
+           responseObject:(id)responseObject
+         requestTotalTime:(CFAbsoluteTime)totalTime
 {
     NSLog(@"##################REQUEST##################");
-    NSLog(@"%@ - %@", operation.request.HTTPMethod, operation.request.URL);
-    NSLog(@"%@", operation.request.allHTTPHeaderFields);
+    NSLog(@"%@ - %@", request.HTTPMethod, request.URL);
+    NSLog(@"%@", request.allHTTPHeaderFields);
     
-    if (operation.request.HTTPBody)
+    if (request.HTTPBody)
     {
-        NSString* lContent = [[NSString alloc] initWithData:operation.request.HTTPBody encoding:NSUTF8StringEncoding];
+        NSString* lContent = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
         NSLog(@"Content %@", lContent);
     }
     
     NSLog(@"-----------------RESPONSE------------------");
-    NSLog(@"Status Code %li", (long)operation.response.statusCode);
-    NSLog(@"%@", operation.response.allHeaderFields);
+    NSLog(@"Status Code %li", (long)response.statusCode);
+    NSLog(@"%@", response.allHeaderFields);
     NSLog(@"Object Response %@", responseObject);
     NSLog(@"##########################################");
 }
 
 
-- (BOOL)isHandledOperationManager:(RPOperationManager*)operationManager
-                 didFailOperation:(RPRequestOperation*)operation
-                        withError:(NSError*)error
+- (BOOL)isHandledReequestDidFail:(NSURLRequest*)request
+                    httpResponse:(NSHTTPURLResponse*)response
+                  responseObject:(id)responseObject
+                           error:(NSError*)error
+                requestTotalTime:(CFAbsoluteTime)totalTime
 {
     NSLog(@"##################REQUEST##################");
-    NSLog(@"%@  - %@", operation.request.HTTPMethod, operation.request.URL);
-    NSLog(@"%@", operation.request.allHTTPHeaderFields);
-    NSString* lContent = [[NSString alloc] initWithData:operation.request.HTTPBody encoding:NSUTF8StringEncoding];
+    NSLog(@"%@  - %@", request.HTTPMethod, request.URL);
+    NSLog(@"%@", request.allHTTPHeaderFields);
+    NSString* lContent = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
     NSLog(@"Content %@", lContent);
     NSLog(@"-----------------RESPONSE------------------");
-    NSLog(@"Status Code %li - Error %@", (long)operation.response.statusCode, error.localizedDescription);
-    NSLog(@"%@", operation.response.allHeaderFields);
-    NSLog(@"Object Response %@", operation.responseObject);
+    NSLog(@"Status Code %li - Error %@", (long)response.statusCode, error.localizedDescription);
+    NSLog(@"%@", response.allHeaderFields);
+    NSLog(@"Object Response %@", responseObject);
     NSLog(@"##########################################");
     
     return NO;
 }
+
 
 
 @end
